@@ -1,5 +1,3 @@
-import { InvalidCredentialsError } from "./errors/invalid-credentials-error"
-import { compare } from "bcryptjs"
 import type { CheckIn } from "generated/prisma/client"
 import type { CheckInsRepository } from "@/repositories/check-ins-repository"
 import type { GymsRepository } from "@/repositories/gyms-repository"
