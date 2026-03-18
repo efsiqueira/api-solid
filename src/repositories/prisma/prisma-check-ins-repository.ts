@@ -1,5 +1,5 @@
-import type { CheckIn } from "generated/prisma/client"
-import type { CheckInUncheckedCreateInput } from "generated/prisma/models"
+import type { CheckIn } from "prisma/generated/prisma/client"
+import type { CheckInUncheckedCreateInput } from "prisma/generated/prisma/models"
 import type { CheckInsRepository } from "../check-ins-repository"
 import { prisma } from "@/lib/prisma"
 import dayjs from "dayjs"

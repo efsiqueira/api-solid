@@ -1,7 +1,7 @@
-import type { Gym } from "generated/prisma/client"
-import type { GymCreateInput } from "generated/prisma/models"
+import { Prisma, type Gym } from "prisma/generated/prisma/client"
+import type { GymCreateInput } from "prisma/generated/prisma/models"
 import type { FindManyNearbyParams, GymsRepository } from "../gyms-repository"
-import { prisma } from "@/lib/prisma"
+import { prisma, schema } from "@/lib/prisma"
 
 export class PrismaGymsRepository implements GymsRepository {
   async findById(id: string) {
@@ -16,7 +16,7 @@ export class PrismaGymsRepository implements GymsRepository {
   async findManyNearby({ latitude, longitude }: FindManyNearbyParams) {
     const gyms = await prisma.$queryRaw<Gym[]>`
       SELECT *
-      FROM gyms
+      FROM ${Prisma.raw(`"${schema}".gyms`)}
       WHERE (
         6371 * acos(
           cos(radians(${latitude})) *

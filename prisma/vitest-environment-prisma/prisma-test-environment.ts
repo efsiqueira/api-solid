@@ -1,7 +1,8 @@
-import { prisma } from '@/lib/prisma'
 import 'dotenv/config'
-import { execSync } from 'node:child_process'
+
 import { randomUUID } from 'node:crypto'
+import { execSync } from 'node:child_process'
+import { prisma } from '@/lib/prisma'
 
 import type { Environment } from 'vitest/environments'
 
@@ -19,13 +20,11 @@ function generateDatabaseUrl(schema: string) {
 
 export default <Environment>{
   name: 'prisma',
-  transformMode: 'ssr',
+  viteEnvironment: 'ssr',
   async setup() {
     // 1 - Criar o banco de testes
     const schema = randomUUID()
     const databaseUrl = generateDatabaseUrl(schema)
-
-    console.log(databaseUrl)
 
     process.env.DATABASE_URL = databaseUrl
 
