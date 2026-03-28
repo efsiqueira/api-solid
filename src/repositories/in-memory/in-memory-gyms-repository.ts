@@ -1,8 +1,8 @@
-import type { Prisma, Gym } from "prisma/generated/prisma/client"
+import { Prisma } from "../../../prisma/generated/prisma/client"
+import type { Gym } from "../../../prisma/generated/prisma/client"
 import type { FindManyNearbyParams, GymsRepository } from "../gyms-repository"
 import { randomUUID } from "node:crypto"
 import { getDistanceBetweenCoordinates } from "@/utils/get-distance-between-coordinates"
-import { Decimal } from "prisma/generated/prisma/internal/prismaNamespace"
 
 export class InMemoryGymsRepository implements GymsRepository {
   public items: Gym[] = []
@@ -40,8 +40,8 @@ export class InMemoryGymsRepository implements GymsRepository {
       title: data.title,
       description: data.description ?? null,
       phone: data.phone ?? null,
-      latitude: new Decimal(data.latitude.toString()),
-      longitude: new Decimal(data.longitude.toString()),
+      latitude: new Prisma.Decimal(data.latitude.toString()),
+      longitude: new Prisma.Decimal(data.longitude.toString()),
       created_at: new Date()
     }
 
