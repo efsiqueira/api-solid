@@ -1,4 +1,4 @@
-import type { Gym, } from "prisma/generated/prisma/client"
+import type { Gym } from "prisma/generated/prisma/client"
 import type { GymsRepository } from "@/repositories/gyms-repository"
 
 interface FetchNearbyGymsUseCaseRequest {
