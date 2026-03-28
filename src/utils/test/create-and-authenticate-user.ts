@@ -22,7 +22,5 @@ export async function createAndAuthenticateUser(app: FastifyInstance, isAdmin = 
 
   const { token } = authResponse.body
 
-  return {
-    token
-  }
+  return { token }
 }
