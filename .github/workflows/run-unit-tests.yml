@@ -15,6 +15,6 @@ jobs:
           node-version: 24
           cache: 'npm'
 
-      - run: npm ci
-      - run: npm prisma generate
+      - run: npm install
+      - run: npx prisma generate
       - run: npm run test
